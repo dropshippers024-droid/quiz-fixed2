@@ -1,0 +1,192 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@layer base {
+  :root {
+    /* Warm cream/beige palette */
+    --background: 35 50% 96%;
+    --foreground: 25 30% 15%;
+
+    --card: 35 40% 98%;
+    --card-foreground: 25 30% 15%;
+
+    --popover: 35 40% 98%;
+    --popover-foreground: 25 30% 15%;
+
+    /* Orange accent - warm and inviting */
+    --primary: 28 85% 55%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 35 30% 92%;
+    --secondary-foreground: 25 30% 20%;
+
+    --muted: 35 25% 90%;
+    --muted-foreground: 25 15% 45%;
+
+    --accent: 28 90% 50%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 35 20% 88%;
+    --input: 35 20% 88%;
+    --ring: 28 85% 55%;
+
+    --radius: 0.75rem;
+
+    /* Quiz specific */
+    --quiz-progress: 28 85% 55%;
+    --quiz-option: 35 40% 98%;
+    --quiz-option-hover: 35 35% 95%;
+    --quiz-option-selected: 28 85% 55%;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 25 25% 8%;
+    --foreground: 35 30% 95%;
+
+    --card: 25 20% 12%;
+    --card-foreground: 35 30% 95%;
+
+    --popover: 25 20% 12%;
+    --popover-foreground: 35 30% 95%;
+
+    --primary: 28 85% 55%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 25 20% 18%;
+    --secondary-foreground: 35 30% 90%;
+
+    --muted: 25 15% 20%;
+    --muted-foreground: 35 20% 60%;
+
+    --accent: 28 90% 50%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 25 15% 20%;
+    --input: 25 15% 20%;
+    --ring: 28 85% 55%;
+
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+  }
+}
+
+@layer components {
+  .quiz-container {
+    @apply min-h-[calc(100vh-120px)] flex flex-col items-center justify-center;
+  }
+
+  .quiz-card {
+    @apply w-full max-w-lg bg-card rounded-2xl shadow-lg p-6 md:p-8;
+  }
+
+  .quiz-option {
+    @apply w-full p-4 rounded-xl border-2 border-border bg-quiz-option 
+           hover:bg-quiz-option-hover transition-all duration-200 
+           cursor-pointer text-left font-medium;
+  }
+
+  .quiz-option-selected {
+    @apply border-primary bg-primary/10;
+  }
+
+  .progress-bar {
+    @apply h-2 bg-muted rounded-full overflow-hidden;
+  }
+
+  .progress-fill {
+    @apply h-full bg-primary rounded-full transition-all duration-500 ease-out;
+  }
+
+  .cta-button {
+    @apply w-full py-4 px-8 bg-primary text-primary-foreground 
+           font-semibold text-lg rounded-xl shadow-lg 
+           hover:shadow-xl hover:scale-[1.02] 
+           transition-all duration-300 ease-out;
+  }
+
+  .trust-badge {
+    @apply inline-flex items-center gap-1.5 text-sm text-muted-foreground;
+  }
+}
+
+@layer utilities {
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-out forwards;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.5s ease-out forwards;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-pulse-glow {
+    animation: pulseGlow 2s ease-in-out infinite;
+  }
+
+  @keyframes pulseGlow {
+    0%, 100% {
+      box-shadow: 0 0 0 0 rgba(251, 191, 36, 0);
+    }
+    50% {
+      box-shadow: 0 0 20px 5px rgba(251, 191, 36, 0.3);
+    }
+  }
+}
