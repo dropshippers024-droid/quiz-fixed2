@@ -306,27 +306,27 @@ export default function CleanAffiliatePage() {
                     <p className="text-gray-600 mb-4 text-center font-medium text-sm">{tier.supply}</p>
 
                     {/* Product Image */}
-                    <div className="mb-4 rounded-2xl overflow-hidden">
+                    <div className="mb-2 rounded-2xl overflow-hidden">
                       <img 
                         src={["images/image-2.png", "images/image-main.png", "images/image-3.png"][idx]} 
                         alt={tier.bottles} 
-                        className="w-full h-48 md:h-56 object-cover"
+                        className="w-full h-32 md:h-40 object-cover"
                       />
                     </div>
 
                     {/* Price Section - Focus on Per Bottle */}
-                    <div className="bg-gradient-to-r from-orange-50 to-yellow-50 rounded-2xl p-4 mb-5 border-2 border-orange-100">
-                      <div className="text-center mb-2">
-                        <div className="text-orange-600 font-black text-4xl md:text-5xl">{tier.perBottle}</div>
+                    <div className="bg-gradient-to-r from-orange-50 to-yellow-50 rounded-2xl p-3 mb-3 border-2 border-orange-100">
+                      <div className="text-center mb-1">
+                        <div className="text-orange-600 font-black text-3xl md:text-4xl">{tier.perBottle}</div>
                         <div className="text-gray-600 text-xs font-bold tracking-wide">PER BOTTLE</div>
                       </div>
-                      <div className="text-gray-500 line-through text-xs text-center mb-2">Regular: {tier.oldPrice}</div>
+                      <div className="text-gray-500 line-through text-xs text-center mb-1">Regular: {tier.oldPrice}</div>
                       <div className="text-center text-gray-700 text-xs font-bold">Full price: {tier.newPrice}</div>
-                      <div className="text-green-600 font-black text-xs text-center mt-2 bg-green-50 py-1.5 rounded-lg">{tier.savings}</div>
+                      <div className="text-green-600 font-black text-xs text-center mt-1 bg-green-50 py-1 rounded-lg">{tier.savings}</div>
                     </div>
 
                     {tier.features.length > 0 && (
-                      <div className="space-y-1.5 mb-4">
+                      <div className="space-y-1 mb-3">
                         {tier.features.map((feature, i) => (
                           <div key={i} className="flex items-center gap-2 text-gray-700 font-semibold text-xs">
                             <span className="text-green-600 text-base">✓</span>
@@ -362,43 +362,43 @@ export default function CleanAffiliatePage() {
         </section>
 
         {/* Bonuses Section */}
-        <section className="bg-orange-50 py-12 md:py-16 px-4 md:px-6">
+        <section className="bg-orange-50 py-10 md:py-12 px-4 md:px-6">
           <div className="max-w-5xl mx-auto">
-            <h2 className="text-2xl md:text-4xl font-black text-gray-900 mb-8 text-center" style={{ fontFamily: 'system-ui, -apple-system, sans-serif' }}>
+            <h2 className="text-xl md:text-3xl font-black text-gray-900 mb-6 text-center" style={{ fontFamily: 'system-ui, -apple-system, sans-serif' }}>
               Order Today & Get These FREE Bonuses
             </h2>
 
-            <div className="grid md:grid-cols-2 gap-4 md:gap-6 mb-6">
-              <div className="bg-white rounded-xl p-5 md:p-6 shadow-sm border border-orange-200">
-                <div className="mb-4 rounded-lg overflow-hidden">
+            <div className="grid md:grid-cols-2 gap-3 md:gap-4 mb-4">
+              <div className="bg-white rounded-xl p-4 md:p-5 shadow-sm border border-orange-200">
+                <div className="mb-3 rounded-lg overflow-hidden">
                   <img 
                     src="/images/bonus-1.png" 
                     alt="15-Day Rapid Detox Guide" 
-                    className="w-full h-40 md:h-48 object-cover"
+                    className="w-full h-28 md:h-36 object-cover"
                   />
                 </div>
-                <div className="inline-block bg-orange-600 text-white px-3 py-1 rounded-full text-xs font-semibold mb-2">
+                <div className="inline-block bg-orange-600 text-white px-3 py-0.5 rounded-full text-xs font-semibold mb-2">
                   FREE BONUS
                 </div>
-                <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-2">15-Day Rapid Detox Guide</h3>
-                <p className="text-gray-700 leading-relaxed text-sm">
+                <h3 className="text-base md:text-lg font-bold text-gray-900 mb-1">15-Day Rapid Detox Guide</h3>
+                <p className="text-gray-700 leading-relaxed text-xs">
                   Jumpstart your results with this proven Mediterranean-style cleanse using simple kitchen ingredients. Designed to reduce inflammation and support natural fat burning.
                 </p>
               </div>
 
-              <div className="bg-white rounded-xl p-5 md:p-6 shadow-sm border border-orange-200">
-                <div className="mb-4 rounded-lg overflow-hidden">
+              <div className="bg-white rounded-xl p-4 md:p-5 shadow-sm border border-orange-200">
+                <div className="mb-3 rounded-lg overflow-hidden">
                   <img 
                     src="/images/bonus-2.png" 
                     alt="Metabolism Reset Mindset Program" 
-                    className="w-full h-40 md:h-48 object-cover"
+                    className="w-full h-28 md:h-36 object-cover"
                   />
                 </div>
-                <div className="inline-block bg-orange-600 text-white px-3 py-1 rounded-full text-xs font-semibold mb-2">
+                <div className="inline-block bg-orange-600 text-white px-3 py-0.5 rounded-full text-xs font-semibold mb-2">
                   FREE BONUS
                 </div>
-                <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-2">Metabolism Reset Mindset Program</h3>
-                <p className="text-gray-700 leading-relaxed text-sm">
+                <h3 className="text-base md:text-lg font-bold text-gray-900 mb-1">Metabolism Reset Mindset Program</h3>
+                <p className="text-gray-700 leading-relaxed text-xs">
                   Daily 5-minute techniques to rewire your relationship with food, eliminate emotional eating, and build lasting healthy habits that stick.
                 </p>
               </div>
