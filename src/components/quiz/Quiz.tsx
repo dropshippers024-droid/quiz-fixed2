@@ -90,7 +90,6 @@ const Quiz = () => {
   const handleAnswer = (answer: string) => {
     const newAnswers = [...answers, answer];
     setAnswers(newAnswers);
-
     trackQuizQuestion(currentQuestion + 1, answer);
 
     if (currentQuestion < quizQuestions.length - 1) {
@@ -101,9 +100,10 @@ const Quiz = () => {
   };
 
   const handleEmailSubmit = async (email: string) => {
-    console.log("📧 Email submitted:", email);
+    console.log("📧 ========== EMAIL SUBMISSION STARTED ==========");
+    console.log("📧 Email:", email);
+    console.log("⏰ Timestamp:", new Date().toISOString());
 
-    // 1. BACKUP: Save to Google Form
     const GOOGLE_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSeMmavVuRpZW2Q_6f13imXJ25MYQXkFhqfjOLqvA39QynGY0A/formResponse";
     const ENTRY_ID = "entry.637616055";
 
@@ -116,54 +116,68 @@ const Quiz = () => {
         },
         body: `${ENTRY_ID}=${encodeURIComponent(email)}`,
       });
-      console.log("✅ Backup saved to Google Form");
+      console.log("✅ STEP 1: Backup saved to Google Form");
     } catch (error) {
-      console.error("❌ Backup error:", error);
+      console.error("❌ STEP 1 ERROR:", error);
     }
 
-    // 2. EMAIL AUTOMATION: Send to Apps Script using GET (bypasses CORS)
     const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxWhF_TxXWU1EkrZRmoJI-AjHMg4ZS3C8uRNWz3OHwTOVrSicH3o5mA9R0aX0_Xkg_fEQ/exec";
 
     try {
-      // Use GET with URL parameters (works around CORS)
-      const urlWithEmail = `${APPS_SCRIPT_URL}?email=${encodeURIComponent(email)}`;
+      const urlWithEmail = `${APPS_SCRIPT_URL}?email=${encodeURIComponent(email)}&timestamp=${Date.now()}`;
       
-      console.log("📤 Sending to Apps Script:", urlWithEmail);
+      console.log("📤 STEP 2: Sending to Apps Script...");
+      console.log("🔗 URL:", urlWithEmail);
       
       const response = await fetch(urlWithEmail, {
         method: "GET",
         redirect: "follow"
       });
 
+      console.log("📊 Response status:", response.status);
+      console.log("📊 Response ok:", response.ok);
+
       if (response.ok) {
-        const result = await response.json();
-        console.log("✅ Email automation triggered:", result);
+        try {
+          const result = await response.json();
+          console.log("✅ STEP 2: Email automation SUCCESS!");
+          console.log("📋 Response data:", result);
+          
+          if (result.serverTracking) {
+            console.log("📊 Server-side tracking:", result.serverTracking);
+          }
+        } catch (jsonError) {
+          console.log("✅ STEP 2: Request sent (response not JSON, but that's OK)");
+        }
       } else {
-        console.warn("⚠️ Response status:", response.status);
-        // Even if response isn't perfect, request likely went through
-        console.log("✅ Request sent (check Apps Script logs)");
+        console.warn("⚠️ STEP 2: Non-OK status, but request was sent");
+        console.log("💡 Check Apps Script Executions log to verify");
       }
     } catch (error) {
-      console.error("❌ Automation error:", error);
+      console.error("❌ STEP 2 ERROR:", error);
       
-      // Fallback: Try with no-cors (fire and forget)
       try {
-        const urlWithEmail = `${APPS_SCRIPT_URL}?email=${encodeURIComponent(email)}`;
+        const urlWithEmail = `${APPS_SCRIPT_URL}?email=${encodeURIComponent(email)}&timestamp=${Date.now()}`;
         await fetch(urlWithEmail, { 
           method: "GET",
           mode: "no-cors"
         });
-        console.log("✅ Fallback request sent");
+        console.log("✅ STEP 2 FALLBACK: Sent with no-cors mode");
+        console.log("💡 Check Apps Script Executions to confirm it worked");
       } catch (fallbackError) {
-        console.error("❌ Fallback also failed:", fallbackError);
+        console.error("❌ STEP 2 FALLBACK ERROR:", fallbackError);
       }
     }
 
-    // 3. TRACK: Facebook Pixel (Lead event)
-    trackEmailCapture();
-    console.log("✅ Facebook Lead event tracked");
+    try {
+      trackEmailCapture(email);
+      console.log("✅ STEP 3: Facebook Pixel Lead event tracked");
+    } catch (error) {
+      console.error("❌ STEP 3 ERROR:", error);
+    }
 
-    // 4. PROCEED: Show loading screen
+    console.log("✅ ========== ALL STEPS COMPLETE ==========");
+    console.log("🎯 Proceeding to loading screen...");
     setQuizState("loading");
   };
 
