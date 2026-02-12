@@ -362,15 +362,15 @@ export default function CleanAffiliatePage() {
         </section>
 
         {/* Bonuses Section */}
-        <section className="bg-orange-50 py-10 md:py-12 px-4 md:px-6">
+        <section className="bg-orange-50 py-6 md:py-12 px-4 md:px-6">
           <div className="max-w-5xl mx-auto">
-            <h2 className="text-xl md:text-3xl font-black text-gray-900 mb-6 text-center" style={{ fontFamily: 'system-ui, -apple-system, sans-serif' }}>
+            <h2 className="text-xl md:text-3xl font-black text-gray-900 mb-4 text-center" style={{ fontFamily: 'system-ui, -apple-system, sans-serif' }}>
               Order Today & Get These FREE Bonuses
             </h2>
 
-            <div className="grid md:grid-cols-2 gap-3 md:gap-4 mb-4">
-              <div className="bg-white rounded-xl p-4 md:p-5 shadow-sm border border-orange-200">
-                <div className="mb-3 rounded-lg overflow-hidden bg-gradient-to-b from-gray-50 to-white flex items-center justify-center" style={{height: '160px'}}>
+            <div className="grid md:grid-cols-2 gap-2.5 md:gap-4 mb-3">
+              <div className="bg-white rounded-xl p-3 md:p-5 shadow-sm border border-orange-200">
+                <div className="mb-2 rounded-lg overflow-hidden bg-gradient-to-b from-gray-50 to-white flex items-center justify-center" style={{height: '140px'}}>
                   <img 
                     src="/images/bonus-1.png" 
                     alt="15-Day Rapid Detox Guide" 
@@ -386,8 +386,8 @@ export default function CleanAffiliatePage() {
                 </p>
               </div>
 
-              <div className="bg-white rounded-xl p-4 md:p-5 shadow-sm border border-orange-200">
-                <div className="mb-3 rounded-lg overflow-hidden bg-gradient-to-b from-gray-50 to-white flex items-center justify-center" style={{height: '160px'}}>
+              <div className="bg-white rounded-xl p-3 md:p-5 shadow-sm border border-orange-200">
+                <div className="mb-2 rounded-lg overflow-hidden bg-gradient-to-b from-gray-50 to-white flex items-center justify-center" style={{height: '140px'}}>
                   <img 
                     src="/images/bonus-2.png" 
                     alt="Metabolism Reset Mindset Program" 
