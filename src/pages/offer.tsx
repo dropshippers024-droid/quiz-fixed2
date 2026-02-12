@@ -306,11 +306,11 @@ export default function CleanAffiliatePage() {
                     <p className="text-gray-600 mb-4 text-center font-medium text-sm">{tier.supply}</p>
 
                     {/* Product Image */}
-                    <div className="mb-2 rounded-2xl overflow-hidden">
+                    <div className="mb-4 rounded-2xl overflow-hidden">
                       <img 
                         src={["images/image-2.png", "images/image-main.png", "images/image-3.png"][idx]} 
                         alt={tier.bottles} 
-                        className="w-full h-32 md:h-40 object-cover"
+                        className="w-full h-48 md:h-56 object-cover"
                       />
                     </div>
 
@@ -370,11 +370,11 @@ export default function CleanAffiliatePage() {
 
             <div className="grid md:grid-cols-2 gap-3 md:gap-4 mb-4">
               <div className="bg-white rounded-xl p-4 md:p-5 shadow-sm border border-orange-200">
-                <div className="mb-3 rounded-lg overflow-hidden">
+                <div className="mb-3 rounded-lg overflow-hidden bg-gradient-to-b from-gray-50 to-white flex items-center justify-center" style={{height: '160px'}}>
                   <img 
                     src="/images/bonus-1.png" 
                     alt="15-Day Rapid Detox Guide" 
-                    className="w-full h-28 md:h-36 object-cover"
+                    className="w-full h-full object-contain"
                   />
                 </div>
                 <div className="inline-block bg-orange-600 text-white px-3 py-0.5 rounded-full text-xs font-semibold mb-2">
@@ -387,11 +387,11 @@ export default function CleanAffiliatePage() {
               </div>
 
               <div className="bg-white rounded-xl p-4 md:p-5 shadow-sm border border-orange-200">
-                <div className="mb-3 rounded-lg overflow-hidden">
+                <div className="mb-3 rounded-lg overflow-hidden bg-gradient-to-b from-gray-50 to-white flex items-center justify-center" style={{height: '160px'}}>
                   <img 
                     src="/images/bonus-2.png" 
                     alt="Metabolism Reset Mindset Program" 
-                    className="w-full h-28 md:h-36 object-cover"
+                    className="w-full h-full object-contain"
                   />
                 </div>
                 <div className="inline-block bg-orange-600 text-white px-3 py-0.5 rounded-full text-xs font-semibold mb-2">
